@@ -34,3 +34,19 @@ Person.hey = function() {
     console.log('Hey there!');
 };
 Person.hey(); // Expect: Hey there!; Not inherited - eg. jonas.hey() invalid
+
+const Student = function(firstName, birthYear, course) {
+    Person.call(this, firstName, birthYear);
+    this.course = course;
+}
+
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function() {
+    console.log(`My name is ${this.firstName} and study ${this.course}`);
+}
+
+const mike = new Student('Mike', 2015, 'Computer Science');
+mike.introduce(); // Expect: My name is Mike and study Computer Science
+mike.calcAge(); // Expect: 8; inherit parent's prototype
+console.log(mike instanceof Student, mike instanceof Person); // Expect: true true

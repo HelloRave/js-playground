@@ -37,3 +37,19 @@ console.log(jonas.firstName); // Expect: Jo
 
 // Static method (vs Instance method)
 Person.hey(); // Expect: Hey there!
+
+// Class inheritance
+class Student extends Person {
+    constructor(firstName, birthYear, course) {
+        super(firstName, birthYear);
+        this.course = course;
+    }
+
+    calcAge() {
+        console.log('Method overwritten');
+    }
+}
+
+const mike = new Student('Mike', 2018, 'Computer Science');
+mike.calcAge(); // Expect: Method overwritten
+console.log(mike.firstName); // Expect: Mike

@@ -29,3 +29,8 @@ console.log(jonas.hasOwnProperty('firstName'), jonas.hasOwnProperty('calcAge'));
 // Expect: true false
 // Object has the specified property as its own property (as opposed to inheriting it)
 // hasOwnProperty is under Object.prototype
+
+Person.hey = function() {
+    console.log('Hey there!');
+};
+Person.hey(); // Expect: Hey there!; Not inherited - eg. jonas.hey() invalid

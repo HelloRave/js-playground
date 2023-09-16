@@ -1,11 +1,14 @@
 class Person {
+    publicField = '';
+    #field = ''; // Private field syntax for JS
+
     constructor(firstName, birthYear) {
         this.firstName = firstName;
-        this.birthYear = birthYear;
+        this._birthYear = birthYear; // if prefixed with _, by convention means protected
     }
 
     calcAge() {
-        console.log(2023 - this.birthYear);
+        console.log(2023 - this._birthYear);
     }
 
     get firstName() {
@@ -18,6 +21,10 @@ class Person {
 
     static hey() {
         console.log('Hey there!');
+    }
+
+    #privateMethod() {
+        return console.log('Cannot be logged');
     }
 }
 
